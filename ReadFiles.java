@@ -8,11 +8,11 @@
   If the directory has others directories inside it, then the format returned
   is:
   name_directory:
-  	name_directory: [type_content1, type_content2, type_content3]
-  	name_directory: [type_content1, type_content2, type_content3]
-  		name_directory: [type_content1, type_content2, type_content3]
-  		name_directory: [type_content1, type_content2, type_content3]
-  	name_directory: [type_content1, type_content2, type_content3]
+  	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
+  	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
+  		name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
+  		name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
+  	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
 */
 public class ReadFiles {
 	private String path = null;
@@ -28,4 +28,5 @@ public class ReadFiles {
 	public int getNumberFilesOfNType(String fileType, String folderPath){
 		return numberOfFiles;
 	}
+
 }

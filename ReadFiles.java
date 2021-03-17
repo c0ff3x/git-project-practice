@@ -24,4 +24,8 @@ public class ReadFiles {
 	public String getPath(){
 		return path;
 	}
+
+	public int getNumberFilesOfNType(String fileType, String folderPath){
+		return numberOfFiles;
+	}
 }

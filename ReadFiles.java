@@ -56,4 +56,8 @@ public class ReadFiles {
 			System.err.println("Could not show the content of the path, the directory may not even exists or the path must be wrong.");
 		}
 	}
+
+	public void dummyMethod(){
+		//some work here
+	}
 }

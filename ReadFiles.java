@@ -14,8 +14,14 @@
   		name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
   	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
 */
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Scanner;
+
 public class ReadFiles {
 	private String path = null;
+	Scanner keyboardInput = new Scanner(System.in);
 
 	public ReadFiles(String readPath){
 		path = readPath;
@@ -25,8 +31,29 @@ public class ReadFiles {
 		return path;
 	}
 
+	public void setPath(String newPath){
+		if (!path.isEmpty()){
+			System.out.printf("¡Warning! This will re-write the following path: %s%n Do you wish to continue [y]continue, [n] not re-write (whit will keep the showed path.)", path);
+			//read the response of the user
+			char userInput = keyboardInput.next().charAt(0);
+			if (userInput == 'y'){
+				path = newPath;
+			}
+		}
+	}
+
 	public int getNumberFilesOfNType(String fileType, String folderPath){
+		int numberOfFiles = 0;
 		return numberOfFiles;
 	}
 
+	public void returnNonRecursiveDirectoryContent(){
+		try{
+			Files.list(new File(path).toPath()).limit(100).forEach(dirElement -> {
+			System.out.println(dirElement);
+			});
+		} catch(IOException except){
+			System.err.println("Could not show the content of the path, the directory may not even exists or the path must be wrong.");
+		}
+	}
 }

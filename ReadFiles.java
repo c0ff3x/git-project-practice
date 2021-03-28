@@ -57,7 +57,7 @@ public class ReadFiles {
 		}
 	}
 
-	public void dummyMethod(){
+	private void dummyMethod(){
 		//some work here
 	}
 }

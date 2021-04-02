@@ -18,6 +18,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Scanner;
+///list directory recursively
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 public class ReadFiles {
 	private String path = null;
@@ -57,7 +62,11 @@ public class ReadFiles {
 		}
 	}
 
-	private void dummyMethod(){
-		//some work here
+	public void returnRecursiveDirectoryContent(){
+		try (Stream<Path> paths = Files.walk(Paths.get(path))){
+			paths.filter(Files::isRegularFile).forEach(System.out::println);
+		} catch(IOException filenotfound){
+			System.out.println("Could not list contents of the direcoty");
+		}
 	}
 }

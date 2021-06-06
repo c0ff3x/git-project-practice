@@ -1,12 +1,14 @@
 /*
-  This class reads a path a return its kind ofcontent, it detects what kind
+ * File type and file extention are terms used interchangeably here.
+  This class reads a path a return its kind of content, it detects what kind
   of files the directory has and return the name of the dir with the types 
   of its content (if the dir has another dirs, the class would return the
-  the type of files that the fir has with the name of its parent dir).
+  the type of files that the dir has with the name of its parent dir if
+  specified).
   The format to return is:
-  name_directory: [type_content1, type_content2: type_content3]
+  name_directory: [type_content1 -> num_of_files, type_content2 ->num_of_files, type_content3 -> num_of_files]
   If the directory has others directories inside it, then the format returned
-  is:
+  is (if specified):
   name_directory:
   	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
   	name_directory: [type_content1 -> num_of_files, type_content2 -> num_of_files, type_content3 -> num_of_files]
@@ -27,17 +29,30 @@ import java.util.stream.Stream;
 public class ReadFiles {
 	private String path = null;
 	Scanner keyboardInput = new Scanner(System.in);
+	private String[] uniqueFilesTypes;
 
 	public ReadFiles(String readPath){
-		path = readPath;
+		if (readPath != null && !readPath.isEmpty()){
+			path = readPath;
+		} else {
+			System.out.println("path should not be empty, is you call some method to perform some"
+					+ " operation you\'ll be asked for a path before continue.");
+		}
 	}
+
 
 	public String getPath(){
 		return path;
 	}
 
+
+	/*
+	 * Remenber: some comments may look redundant but if you plan to abandon the project for certain time
+	 * and back again later, these "redundant comments" may be helpful to remember what your code is doing.
+	 *
+	 * Sets a new path if wished to work on another directory.*/
 	public void setPath(String newPath){
-		if (!path.isEmpty()){
+		if (newPath != null && !newPath.isEmpty()){
 			System.out.printf("¡Warning! This will re-write the following path: %s%n Do you wish to continue [y]continue, [n] not re-write (whit will keep the showed path.)", path);
 			//read the response of the user
 			char userInput = keyboardInput.next().charAt(0);
@@ -47,11 +62,27 @@ public class ReadFiles {
 		}
 	}
 
-	public int getNumberFilesOfNType(String fileType, String folderPath){
+
+	/*Returns number of files of a specific type
+	 * @param fileExtention: the type of files wished to count inside the directory
+	 *
+	 * @return number of files of fileExtention found.
+	 * */
+	public int getNumberFilesOfNType(String fileExtention, String filePath){
 		int numberOfFiles = 0;
 		return numberOfFiles;
 	}
 
+	/*
+	 * ¡You should choose between document your code in English or Spanish, remember do not mix
+	 * different languages in one file!
+	 *
+	 * Lista de manera no recursiva un directorio retornando un flujo de objetos con la ruta de los
+	 * archivos contenidos en el directorio especificado
+	 * Lists in a non-recursive way the content of a directory returning a lazily populated stream
+	 * of paths of the files on it.
+	 * 
+	 * */
 	public void returnNonRecursiveDirectoryContent(){
 		try{
 			Files.list(new File(path).toPath()).limit(100).forEach(dirElement -> {
@@ -62,11 +93,28 @@ public class ReadFiles {
 		}
 	}
 
+
 	public void returnRecursiveDirectoryContent(){
 		try (Stream<Path> paths = Files.walk(Paths.get(path))){
 			paths.filter(Files::isRegularFile).forEach(System.out::println);
 		} catch(IOException filenotfound){
 			System.out.println("Could not list contents of the direcoty");
 		}
+	}
+
+
+	private boolean isTypeFile(String textFilePath){
+		return false;
+	}
+
+
+	/*
+	 * Remember: ¡PRIVATE METHODS shuold not be documented in public documentation, this
+	 * is done only for demotration purposes or if the code is private, and you want to remember
+	 * what the code is doing!
+	 *
+	 * Depeding on the OS, returns if the path is valid.*/
+	private boolean isValidPath(){
+		return false;
 	}
 }

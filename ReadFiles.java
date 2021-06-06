@@ -93,6 +93,8 @@ public class ReadFiles {
 	}
 
 
+	/*
+	 * Prints a list of paths of a directory recursively*/
 	public void returnRecursiveDirectoryContent(){
 		try (Stream<Path> paths = Files.walk(Paths.get(path))){
 			paths.filter(Files::isRegularFile).forEach(System.out::println);

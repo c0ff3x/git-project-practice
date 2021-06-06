@@ -20,7 +20,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Scanner;
-///list directory recursively
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -29,6 +28,7 @@ public class ReadFiles {
 	private String path = null;
 	Scanner keyboardInput = new Scanner(System.in);
 	private String[] uniqueFilesTypes;
+	private String OS;
 
 	public ReadFiles(String readPath){
 		if (readPath != null && !readPath.isEmpty()){
@@ -46,7 +46,7 @@ public class ReadFiles {
 
 
 	/*
-	 * Remenber: some comments may look redundant but if you plan to abandon the project for certain time
+	 * Remember: some comments may look redundant but if you plan to abandon the project for certain time
 	 * and back again later, these "redundant comments" may be helpful to remember what your code is doing.
 	 *
 	 * Sets a new path if wished to work on another directory.*/

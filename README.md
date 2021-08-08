@@ -1,4 +1,4 @@
-This repository is no actively maintained. See main [Readme](https://github.com/c0ff3x#if-youre-here-that-means-you-reached-some-of-my-ugly-projects-hi-) on profile for information.
+*This repository is no actively maintained. See main [Readme](https://github.com/c0ff3x#if-youre-here-that-means-you-reached-some-of-my-ugly-projects-hi-) on profile for information.*
 
 
 # git-project-practice
